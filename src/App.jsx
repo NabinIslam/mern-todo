@@ -1,5 +1,6 @@
 import React from 'react';
 import AddTodo from './components/AddTodo';
+import Todos from './components/Todos';
 
 const App = () => {
   return (
@@ -8,6 +9,7 @@ const App = () => {
         Note your important todos
       </h1>
       <AddTodo />
+      <Todos />
     </div>
   );
 };
