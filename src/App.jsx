@@ -6,7 +6,10 @@ import { useQuery } from '@tanstack/react-query';
 function App() {
   const { data: todos = [], refetch } = useQuery({
     queryKey: 'todos',
-    queryFn: () => fetch('http://localhost:5000/todos').then(res => res.json()),
+    queryFn: () =>
+      fetch('https://mern-todo-server.vercel.app/todos').then(res =>
+        res.json()
+      ),
   });
 
   return (
@@ -15,7 +18,7 @@ function App() {
         Note your important todos
       </h1>
       <AddTodo refetch={refetch} />
-      <Todos todos={todos} />
+      <Todos todos={todos} refetch={refetch} />
     </div>
   );
 }

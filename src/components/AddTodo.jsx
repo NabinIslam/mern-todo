@@ -7,7 +7,7 @@ function AddTodo({ refetch }) {
     const form = event.target;
     const todo = form.todoText.value;
 
-    fetch('http://localhost:5000/todos', {
+    fetch('https://mern-todo-server.vercel.app/todos', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
