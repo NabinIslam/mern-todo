@@ -1,28 +1,17 @@
-import { Button, TextField } from '@mui/material';
-import { Box } from '@mui/system';
 import React from 'react';
 
 const AddTodo = () => {
   return (
-    <Box>
-      <form>
-        <Box
-          maxWidth={1000}
-          margin="auto"
-          sx={{ display: 'flex', gap: '10px' }}
-        >
-          <TextField
-            fullWidth={true}
-            label="Add Todo"
-            variant="outlined"
-            required
-          />
-          <Button type="submit" variant="contained">
-            Add
-          </Button>
-        </Box>
+    <div className="py-10">
+      <form className="max-w-md mx-auto flex justify-center gap-1 items-center">
+        <input
+          type="text"
+          placeholder="Type your todo"
+          className="input input-bordered w-full max-w-xs input-sm"
+        />
+        <button className="btn btn-success btn-sm text-white">Add</button>
       </form>
-    </Box>
+    </div>
   );
 };
 
