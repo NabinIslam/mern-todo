@@ -1,7 +1,8 @@
 import React from 'react';
 import { toast } from 'react-hot-toast';
+import TodoEditModal from './TodoEditModal';
 
-const Todo = ({ todo, refetch }) => {
+function Todo({ todo, refetch }) {
   const { todoName, _id } = todo;
 
   function handleTodoDelete(id) {
@@ -21,7 +22,13 @@ const Todo = ({ todo, refetch }) => {
     <li className="flex items-center justify-between gap-5 border p-2 rounded-lg my-1">
       <p className="font-semibold text-black">{todoName}</p>
       <div className="flex items-center">
-        <button className="btn btn-success btn-sm text-white mr-1">Edit</button>
+        <label
+          htmlFor="my-modal-3"
+          className="btn btn-success btn-sm text-white mr-1"
+        >
+          Edit
+        </label>
+        <TodoEditModal />
         <button
           className="btn btn-error btn-sm text-white"
           onClick={() => handleTodoDelete(_id)}
@@ -31,6 +38,6 @@ const Todo = ({ todo, refetch }) => {
       </div>
     </li>
   );
-};
+}
 
 export default Todo;
