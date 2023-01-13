@@ -1,6 +1,31 @@
 import React from 'react';
+import { toast } from 'react-hot-toast';
 
-export default function TodoEditModal() {
+function TodoEditModal({ id, refetch, todoName }) {
+  function handleUpdateTodo(event) {
+    event.preventDefault();
+
+    const form = event.target;
+    const updatedTodo = form.todoText.value;
+
+    fetch(`https://mern-todo-server.vercel.app/todos/${id}`, {
+      method: 'PUT',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify({ todoName: updatedTodo }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        if (data.modifiedCount > 0) {
+          form.reset();
+          refetch();
+          toast.success('Todo updated');
+        }
+      });
+  }
+
   return (
     <>
       <input type="checkbox" id="my-modal-3" className="modal-toggle" />
@@ -13,20 +38,24 @@ export default function TodoEditModal() {
             ✕
           </label>
           <h3 className="text-lg font-bold text-center mb-5">
-            Change todo name
+            Change your todo
           </h3>
-          <form className="max-w-md mx-auto flex justify-center gap-1 items-center">
+          <form
+            className="max-w-md mx-auto flex justify-center gap-2 items-center"
+            onSubmit={handleUpdateTodo}
+          >
             <input
               type="text"
               name="todoText"
-              placeholder="Type your todo"
+              defaultValue={todoName}
               className="input input-bordered w-full max-w-xs input-sm"
             />
             <label
               htmlFor="my-modal-3"
               className="btn btn-success btn-sm text-white"
+              itemType="submit"
             >
-              Update
+              <button>Update</button>
             </label>
           </form>
         </div>
@@ -34,3 +63,5 @@ export default function TodoEditModal() {
     </>
   );
 }
+
+export default TodoEditModal;

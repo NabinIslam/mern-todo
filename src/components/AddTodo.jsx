@@ -4,6 +4,7 @@ import { toast } from 'react-hot-toast';
 function AddTodo({ refetch }) {
   function handleAddTodo(event) {
     event.preventDefault();
+    
     const form = event.target;
     const todo = form.todoText.value;
 
@@ -27,7 +28,7 @@ function AddTodo({ refetch }) {
   return (
     <div className="py-10">
       <form
-        className="max-w-md mx-auto flex justify-center gap-1 items-center"
+        className="max-w-md mx-auto flex justify-center gap-2 items-center"
         onSubmit={handleAddTodo}
       >
         <input

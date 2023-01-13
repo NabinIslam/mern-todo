@@ -28,7 +28,7 @@ function Todo({ todo, refetch }) {
         >
           Edit
         </label>
-        <TodoEditModal />
+        <TodoEditModal id={_id} refetch={refetch} todoName={todoName} />
         <button
           className="btn btn-error btn-sm text-white"
           onClick={() => handleTodoDelete(_id)}
